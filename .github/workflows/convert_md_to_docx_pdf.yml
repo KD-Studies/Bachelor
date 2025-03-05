@@ -29,9 +29,9 @@ jobs:
 
       - name: Convert Markdown to PDF
         run: |
-          mkdir -p docs/pdf  # Falls der Ordner nicht existiert, wird er erstellt
-          for file in docs/markdown/*.md; do  # Schleife über alle Markdown-Dateien
-            pandoc "$file" --pdf-engine=xelatex -o "docs/pdf/$(basename "${file%.md}.pdf")"  # Konvertiere .md nach .pdf
+          mkdir -p docs/pdf
+          for file in docs/markdown/*.md; do
+            pandoc "$file" --pdf-engine=pdflatex -o "docs/pdf/$(basename "${file%.md}.pdf")"
           done
 
       - name: Commit generated files
