@@ -13,9 +13,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3  # Lädt den Code aus dem GitHub-Repository
-
-      - name: Install Pandoc & LaTeX
-        run: sudo apt-get install -y pandoc texlive-xetex  # Installiert Pandoc für Konvertierung & XeLaTeX für PDF
+      
+      - name: Install Pandoc & Full LaTeX
+        run: sudo apt-get install -y pandoc texlive texlive-xetex texlive-fonts-recommended texlive-latex-extra # Installiert Pandoc für Konvertierung & XeLaTeX für PDF
+      
+      - name: Install extra fonts
+        run: sudo apt-get install -y fonts-dejavu fonts-lmodern
 
       - name: Convert Markdown to DOCX
         run: |
