@@ -1,0 +1,40 @@
+name: Convert Markdown to DOCX & PDF  # Name des Workflows
+
+on:
+  push:
+    paths:
+      - "docs/markdown/*.md"  # Workflow wird ausgelöst, wenn sich eine Markdown-Datei ändert
+  workflow_dispatch:  # Ermöglicht das manuelle Starten der Action
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest  # Action läuft auf einem Ubuntu-Linux-Runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Lädt den Code aus dem GitHub-Repository
+
+      - name: Install Pandoc & LaTeX
+        run: sudo apt-get install -y pandoc texlive-xetex  # Installiert Pandoc für Konvertierung & XeLaTeX für PDF
+
+      - name: Convert Markdown to DOCX
+        run: |
+          mkdir -p docs/docx  # Falls der Ordner nicht existiert, wird er erstellt
+          for file in docs/markdown/*.md; do  # Schleife über alle Markdown-Dateien
+            pandoc "$file" -o "docs/docx/$(basename "${file%.md}.docx")"  # Konvertiere .md nach .docx
+          done
+
+      - name: Convert Markdown to PDF
+        run: |
+          mkdir -p docs/pdf  # Falls der Ordner nicht existiert, wird er erstellt
+          for file in docs/markdown/*.md; do  # Schleife über alle Markdown-Dateien
+            pandoc "$file" --pdf-engine=xelatex -o "docs/pdf/$(basename "${file%.md}.pdf")"  # Konvertiere .md nach .pdf
+          done
+
+      - name: Commit generated files
+        run: |
+          git config --global user.name "github-actions"  # Setzt den Commit-Benutzernamen
+          git config --global user.email "actions@github.com"  # Setzt die Commit-E-Mail
+          git add docs/docx/*.docx docs/pdf/*.pdf  # Fügt alle generierten Dateien zum Commit hinzu
+          git commit -m "Auto-generate DOCX & PDF from Markdown" || echo "No changes to commit"  # Commit nur, wenn Änderungen vorhanden sind
+          git push  # Schiebt die Änderungen ins GitHub-Repository
