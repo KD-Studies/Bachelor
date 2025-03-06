@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: ./github/actions/checkout
+        uses: ./.github/actions/checkout
 
       
       - name: Install Pandoc
