@@ -3,7 +3,7 @@ name: Convert Markdown to DOCX & PDF  # Name des Workflows
 on:
   push:
     paths:
-      - "docs/markdown/*.md"  # Workflow wird ausgelöst, wenn sich eine Markdown-Datei ändert
+      - "docs/ImportDocs/markdown/*.md"  # Workflow wird ausgelöst, wenn sich eine Markdown-Datei ändert
   workflow_dispatch:  # Ermöglicht das manuelle Starten der Action
 
 jobs:
@@ -22,22 +22,22 @@ jobs:
 
       - name: Convert Markdown to DOCX
         run: |
-          mkdir -p docs/docx  # Falls der Ordner nicht existiert, wird er erstellt
-          for file in docs/markdown/*.md; do  # Schleife über alle Markdown-Dateien
+          mkdir -p docs/ImportDocs//docx  # Falls der Ordner nicht existiert, wird er erstellt
+          for file in docs/ImportDocs//markdown/*.md; do  # Schleife über alle Markdown-Dateien
             pandoc "$file" -o "docs/docx/$(basename "${file%.md}.docx")"  # Konvertiere .md nach .docx
           done
 
       - name: Convert Markdown to PDF
         run: |
-          mkdir -p docs/pdf
-          for file in docs/markdown/*.md; do
-            pandoc "$file" --pdf-engine=pdflatex -o "docs/pdf/$(basename "${file%.md}.pdf")"
+          mkdir -p docs/ImportDocs//pdf
+          for file in docs/ImportDocs//markdown/*.md; do
+            pandoc "$file" --pdf-engine=pdflatex -o "docs/ImportDocs//pdf/$(basename "${file%.md}.pdf")"
           done
 
       - name: Commit generated files
         run: |
           git config --global user.name "github-actions"  # Setzt den Commit-Benutzernamen
           git config --global user.email "actions@github.com"  # Setzt die Commit-E-Mail
-          git add docs/docx/*.docx docs/pdf/*.pdf  # Fügt alle generierten Dateien zum Commit hinzu
+          git add docs/ImportDocs//docx/*.docx docs/ImportDocs//pdf/*.pdf  # Fügt alle generierten Dateien zum Commit hinzu
           git commit -m "Auto-generate DOCX & PDF from Markdown" || echo "No changes to commit"  # Commit nur, wenn Änderungen vorhanden sind
           git push  # Schiebt die Änderungen ins GitHub-Repository
