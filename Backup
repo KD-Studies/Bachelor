@@ -1,0 +1,128 @@
+
+## Grundlagen
+
+### 1. Oracle APEX (max. 1 Seite)
+- Überblick über die Architektur  
+- Einsatzmöglichkeiten  
+
+### 2. Datenbanken
+- Grundkonzept der Datenbank  
+- **Datenintegrität:**  
+  - Eindeutige Datenzuordnung  
+  - Sicherstellung der korrekten Befüllung aller Spalten und Datentypen in der Zielanwendung  
+  - Intakte Verknüpfung zwischen Original- und Übersetzungsdaten  
+  - Validierung auf vollständige Einträge  
+- **Datenkonsistenz:**  
+  - Synchronhaltung der Übersetzungen mit den Originaldaten  
+  - Sicherstellung, dass Übersetzungen den ursprünglichen Bedeutungszusammenhang bewahren  
+  - Initiale Übersetzungsprüfung (z. B. Prüfung, ob Werte bereits in der Zielsprache vorliegen)  
+- **Datenaufbereitung:**  
+  - Nutzung eines Statusfelds zur Überwachung  
+  - Auditspalten zur Protokollierung der Übersetzungen  
+
+### 3. Künstliche Intelligenz in der Übersetzung
+- Arten von KI-gestützten Übersetzungen  
+- Funktionsweise von KI-Übersetzungsdiensten  
+- Herausforderungen bei KI-Übersetzungen  
+- Integration von KI-Übersetzungsdiensten in die Anwendung  
+
+### 4. API-Schnittstelle
+- Grundlagen von APIs  
+- API für Datenübertragung  
+- Sicherheitsaspekte bei der API-Nutzung  
+- Herausforderungen bei der API-Integration  
+- API-Struktur  
+- API-Monitoring und Wartung  
+
+### 5. Qualitative Inhaltsanalyse (Mayring-Verfahren)
+- Grundlagen der qualitativen Inhaltsanalyse  
+- Prinzipien des Mayring-Verfahrens (z. B. Kategorienbildung, induktives und deduktives Vorgehen)  
+- Relevanz für die Evaluation von Softwareprojekten  
+- Vorteile und Grenzen des Mayring-Verfahrens im Kontext dieser Arbeit  
+
+### 6. Forschungsfragen und Hypothesen
+- **Effizienz-Hypothese:**  
+- **Benutzerfreundlichkeits-Hypothese:**  
+
+---
+
+## Praxisabschnitt
+
+*Beantworten: Phasenartiges Vorgehen*
+
+### 1. Konzept der Anwendung
+- Beschreibung der Übersetzungsanwendung und deren Zielsetzung  
+- Datenfluss: Import und Export von Daten  
+- Berechtigungsverwaltung: Welche Benutzer haben Zugriff?  
+- Zeitpunkt der Übersetzung: Wann und wie sollen Übersetzungen erfolgen?  
+
+### 2. Datenmodell
+- Datenbankstruktur der zentralen Übersetzungsanwendung  
+- Darstellung des Datenmodells:  
+  - Tabellen für Originaleinträge, Übersetzungen, Benutzeranpassungen und Änderungsprotokolle  
+  - Statusfelder zur Überwachung  
+
+### 3. Implementierung der API-Schnittstellen
+- Darstellung der APIs und deren Verbindungen  
+  - **Eingehende API:**  
+    - Anforderungen an die eingehenden Daten  
+  - **Übersetzungs-API:**  
+    - Übergabe relevanter Daten an die API  
+    - Rückgabe von Übersetzungsdaten  
+  - **Ausgehende API:**  
+    - Anforderungen an die Zieltabellen  
+    - Erstellung der Zieltabellen für Übersetzungseinträge  
+
+### 4. Kosten durch API-Aufrufe
+-> Beantworten: Welche Art von Kosten? Metriken?  
+*(Nutzung der APIs / monetäre Faktoren)*  
+- Kosten pro Übersetzungsanfrage  
+
+### 5. Benutzeroberfläche → Prototypisierung
+- Übersichtsseiten  
+- Dashboard:  
+  - Anzahl der importierten Einträge und Herkunft der Anwendungen  
+- Liste der zu übersetzenden Einträge  
+- Verfügbare Zielsprachen  
+
+### 6. Automatisierungen und Statusprüfung
+- Initiale Übersetzung:  
+  - Kennzeichnung von bereits übersetzten und nicht übersetzten Einträgen  
+
+### 7. Fehlerbehandlung und Sicherheit  
+- **Fehlerbehandlung:**  
+  - Protokollierung von Fehlern  
+- **Sicherheitsaspekte:**  
+  - Rechteverwaltung / Datenübertragung sollte verschlüsselt sein  
+  - Zugriffsbeschränkungen für APIs und Benutzer  
+  - Verschlüsselung sensibler Daten bei der Übertragung  
+
+### 8. Tests und Evaluierungen
+- **Testszenarien:**  
+  - Import aller Datensätze  
+  - Übersetzung unter Berücksichtigung des Übersetzungsbedarfs  
+  - Nutzung der API im Zielsystem  
+- **Benutzerfeedback (Formular):**  
+  -> Beantworten: Auswertung einer Umfrage → quantitative Forschungsmethode  
+- Evaluierung der Benutzeroberfläche  
+- Evaluierung der Funktionalitäten  
+
+### 9. Interviews und qualitative Analyse
+- **Ziel der Interviews:**  
+  - Erkenntnisse zu Benutzeranforderungen und -feedback gewinnen  
+- **Anwendung des Mayring-Verfahrens:**  
+  - Entwicklung eines Kategoriensystems basierend auf den Interviewdaten  
+  - Auswertung der Antworten zur Ableitung von Verbesserungsvorschlägen  
+  -> Beantworten: In welcher Phase soll die Methode nach Mayring eingesetzt werden?  
+  *(Das soll im Kontext der Vorstudie für die Anforderungen geschehen)*  
+- **Ergebnisse:**  
+  - Darstellung der wichtigsten Erkenntnisse aus den Interviews  
+  - Validierung der Hypothesen: Verknüpfung der Interviewergebnisse mit den formulierten Hypothesen und Überprüfung ihrer Gültigkeit  
+- Einbindung weiterer externer Übersetzungsanbieter  
+- **Kritische Reflexion:**  
+  -> Kapitel 4:  
+  - Abhängigkeit der Übersetzungsqualität von externen Diensten  
+  - Notwendigkeit kontinuierlicher Überprüfung und Optimierung  
+  - Balance zwischen Automatisierung und manueller Kontrolle als zentrale Herausforderung  
+
+---
